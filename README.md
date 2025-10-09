@@ -3,7 +3,9 @@ Your project's description...
 
 ## Environments
 - Preview: https://main--{repo}--{owner}.aem.page/
+- =>  https://main--universal-editor-getting-started-eds--tyroneaem.aem.page/
 - Live: https://main--{repo}--{owner}.aem.live/
+- - =>  https://main--universal-editor-getting-started-eds--tyroneaem.aem.live/
 
 ## Documentation
 
