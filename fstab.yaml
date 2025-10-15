@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author-p117652-e1146973.adobeaemcloud.com/bin/franklin.delivery/tyroneaem/universal-editor-getting-started-eds/main"
+    url: "https://author-p117652-e1146973.adobeaemcloud.com/bin/franklin.delivery/tyroneaem/universal-editor-getting-started-eds/quoteblock"
     type: "markup"
     suffix: ".html"
