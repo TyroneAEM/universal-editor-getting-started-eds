@@ -13,67 +13,41 @@ export default function decorate(block) {
   // Get all rows from the block
   const rows = [...block.children];
 
-  // Extract content from rows
-  const quoteText = rows[0]?.querySelector('p, div')?.innerHTML || rows[0]?.textContent || '';
-  const authorName = rows[1]?.textContent?.trim() || '';
-  const authorRole = rows[2]?.textContent?.trim() || '';
-
   // Create the quote structure
-  const quoteContainer = document.createElement('div');
+  const quoteContainer = document.createElement('blockquote');
   quoteContainer.className = 'quote-container';
-
-  // Create blockquote element for the quote text
-  const blockquote = document.createElement('blockquote');
-  blockquote.className = 'quote-text';
 
   // Add quotation mark
   const openQuote = document.createElement('span');
   openQuote.className = 'quote-mark quote-mark-open';
   openQuote.setAttribute('aria-hidden', 'true');
   openQuote.textContent = '"';
+  quoteContainer.appendChild(openQuote);
 
-  // Add quote content
-  const quoteContent = document.createElement('p');
-  quoteContent.innerHTML = quoteText;
-
-  // Move instrumentation from original element to new structure
+  // Process quote text (first row)
   if (rows[0]) {
-    moveInstrumentation(rows[0], quoteContent);
+    const quoteTextDiv = rows[0].querySelector('div') || rows[0];
+    quoteTextDiv.className = 'quote-text';
+    moveInstrumentation(rows[0], quoteTextDiv);
+    quoteContainer.appendChild(quoteTextDiv);
   }
 
-  blockquote.appendChild(openQuote);
-  blockquote.appendChild(quoteContent);
-
-  quoteContainer.appendChild(blockquote);
-
-  // Create cite/attribution section if author exists
-  if (authorName) {
+  // Process author name (second row)
+  if (rows[1]) {
     const cite = document.createElement('cite');
     cite.className = 'quote-attribution';
 
-    const authorElement = document.createElement('span');
-    authorElement.className = 'quote-author';
-    authorElement.textContent = authorName;
+    const authorDiv = rows[1].querySelector('div') || rows[1];
+    authorDiv.className = 'quote-author';
+    moveInstrumentation(rows[1], authorDiv);
+    cite.appendChild(authorDiv);
 
-    // Move instrumentation for author
-    if (rows[1]) {
-      moveInstrumentation(rows[1], authorElement);
-    }
-
-    cite.appendChild(authorElement);
-
-    // Add role if provided
-    if (authorRole) {
-      const roleElement = document.createElement('span');
-      roleElement.className = 'quote-role';
-      roleElement.textContent = authorRole;
-
-      // Move instrumentation for role
-      if (rows[2]) {
-        moveInstrumentation(rows[2], roleElement);
-      }
-
-      cite.appendChild(roleElement);
+    // Process author role (third row, optional)
+    if (rows[2]) {
+      const roleDiv = rows[2].querySelector('div') || rows[2];
+      roleDiv.className = 'quote-role';
+      moveInstrumentation(rows[2], roleDiv);
+      cite.appendChild(roleDiv);
     }
 
     quoteContainer.appendChild(cite);
