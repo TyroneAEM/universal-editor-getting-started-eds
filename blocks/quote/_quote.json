@@ -40,6 +40,30 @@
           "name": "role",
           "label": "Author Title/Role",
           "value": ""
+        },
+        {
+          "component": "select",
+          "name": "classes",
+          "label": "Background Color",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Default (Gradient)",
+              "value": ""
+            },
+            {
+              "name": "Red",
+              "value": "red"
+            },
+            {
+              "name": "Green",
+              "value": "green"
+            },
+            {
+              "name": "Blue",
+              "value": "blue"
+            }
+          ]
         }
       ]
     }

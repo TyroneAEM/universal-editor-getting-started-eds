@@ -152,6 +152,83 @@
   color: #b0bec5;
 }
 
+/* Homework: Color Variants for Background */
+
+/* Red background variant */
+.quote.red .quote-container {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+}
+
+.quote.red .quote-text {
+  color: white;
+}
+
+.quote.red .quote-author {
+  color: #ffe66d;
+}
+
+.quote.red .quote-role {
+  color: rgb(255 255 255 / 90%);
+}
+
+.quote.red .quote-attribution {
+  border-top-color: rgb(255 230 109 / 30%);
+}
+
+.quote.red .quote-mark {
+  color: rgb(255 255 255 / 30%);
+}
+
+/* Green background variant */
+.quote.green .quote-container {
+  background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+}
+
+.quote.green .quote-text {
+  color: white;
+}
+
+.quote.green .quote-author {
+  color: #ffeb3b;
+}
+
+.quote.green .quote-role {
+  color: rgb(255 255 255 / 90%);
+}
+
+.quote.green .quote-attribution {
+  border-top-color: rgb(255 235 59 / 30%);
+}
+
+.quote.green .quote-mark {
+  color: rgb(255 255 255 / 30%);
+}
+
+/* Blue background variant */
+.quote.blue .quote-container {
+  background: linear-gradient(135deg, #2980b9 0%, #6dd5fa 100%);
+}
+
+.quote.blue .quote-text {
+  color: white;
+}
+
+.quote.blue .quote-author {
+  color: #ffd700;
+}
+
+.quote.blue .quote-role {
+  color: rgb(255 255 255 / 90%);
+}
+
+.quote.blue .quote-attribution {
+  border-top-color: rgb(255 215 0 / 30%);
+}
+
+.quote.blue .quote-mark {
+  color: rgb(255 255 255 / 30%);
+}
+
 /* Minimal style variant */
 .quote.minimal .quote-container {
   background: transparent;
