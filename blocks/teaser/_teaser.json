@@ -59,9 +59,20 @@
           "name": "textContent_cta2Type",
           "label": "Button Type",
           "valueType": "string",
-          "options": {
-            "$ref": "/models/partials/button-types.json#/buttonTypes"
-          }
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Primary",
+              "value": "primary"
+            },
+            {
+              "name": "Secondary",
+              "value": "secondary"
+            }
+          ]
         },
         {
           "component": "select",
