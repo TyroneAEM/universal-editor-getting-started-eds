@@ -76,3 +76,62 @@
   }
 }
 
+/* Homework 2: Style Variants */
+
+/* Dark variant */
+.teaser.dark > div:last-child {
+  background: rgb(44 62 80 / 90%);
+  color: white;
+}
+
+.teaser.dark > div:last-child h2 {
+  color: white;
+}
+
+.teaser.dark > div:last-child p {
+  color: rgb(236 240 241 / 90%);
+}
+
+/* Wide variant */
+.teaser.wide {
+  width: 100%;
+  max-width: none;
+  left: 0;
+  transform: none;
+}
+
+/* Compact variant */
+.teaser.compact {
+  height: 300px;
+}
+
+.teaser.compact > div:last-child {
+  padding: 15px;
+}
+
+.teaser.compact > div:last-child h2 {
+  font-size: 1.5em;
+}
+
+/* Button type variants */
+.teaser .button-container a.button.primary {
+  background-color: #e34850;
+  color: white;
+  font-weight: bold;
+}
+
+.teaser .button-container a.button.primary:hover {
+  background-color: #c93640;
+}
+
+.teaser .button-container a.button.secondary {
+  background-color: transparent;
+  color: #0073e6;
+  border: 2px solid #0073e6;
+}
+
+.teaser .button-container a.button.secondary:hover {
+  background-color: #0073e6;
+  color: white;
+}
+

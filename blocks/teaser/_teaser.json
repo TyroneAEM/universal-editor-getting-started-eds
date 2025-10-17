@@ -53,6 +53,39 @@
           "name": "textContent_ctaText",
           "label": "CTA label",
           "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "textContent_cta2Type",
+          "label": "Button Type",
+          "valueType": "string",
+          "options": {
+            "$ref": "/models/partials/button-types.json#/buttonTypes"
+          }
+        },
+        {
+          "component": "select",
+          "name": "classes",
+          "label": "Style Variant",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Dark",
+              "value": "dark"
+            },
+            {
+              "name": "Wide",
+              "value": "wide"
+            },
+            {
+              "name": "Compact",
+              "value": "compact"
+            }
+          ]
         }
       ]
     }

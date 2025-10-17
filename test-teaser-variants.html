@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teaser Block Variants & Button Types Test</title>
+  <script src="/scripts/aem.js" type="module"></script>
+  <script src="/scripts/scripts.js" type="module"></script>
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+  <header></header>
+  <main>
+    <div>
+      <h1>Teaser Block - Style Variants & Button Types</h1>
+      <p>Testing the new style variants (dark, wide, compact) and button types (default, primary, secondary).</p>
+    </div>
+
+    <!-- Default Teaser -->
+    <div>
+      <h2>Default Teaser</h2>
+      <div class="teaser">
+        <div>
+          <picture>
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=900&fit=crop" 
+                 alt="Mountain landscape" 
+                 width="1600" 
+                 height="900">
+          </picture>
+        </div>
+        <div>
+          <h2>Discover Amazing Adventures</h2>
+          <p>Join us on one of our next adventures. Browse our list of curated experiences.</p>
+          <p class="button-container">
+            <a href="/" class="button">Default Button</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dark Variant -->
+    <div>
+      <h2>Dark Variant</h2>
+      <div class="teaser dark">
+        <div>
+          <picture>
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1600&h=900&fit=crop" 
+                 alt="Night sky" 
+                 width="1600" 
+                 height="900">
+          </picture>
+        </div>
+        <div>
+          <h2>Night Adventures</h2>
+          <p>Experience the beauty of starlit trails and midnight expeditions.</p>
+          <p class="button-container">
+            <a href="/" class="button primary">Primary Button</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wide Variant -->
+    <div>
+      <h2>Wide Variant</h2>
+      <div class="teaser wide">
+        <div>
+          <picture>
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=2000&h=900&fit=crop" 
+                 alt="Wide landscape" 
+                 width="2000" 
+                 height="900">
+          </picture>
+        </div>
+        <div>
+          <h2>Full-Width Experience</h2>
+          <p>Spanning the entire viewport for maximum impact.</p>
+          <p class="button-container">
+            <a href="/" class="button secondary">Secondary Button</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compact Variant -->
+    <div>
+      <h2>Compact Variant</h2>
+      <div class="teaser compact">
+        <div>
+          <picture>
+            <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=1600&h=600&fit=crop" 
+                 alt="Compact view" 
+                 width="1600" 
+                 height="600">
+          </picture>
+        </div>
+        <div>
+          <h2>Smaller Footprint</h2>
+          <p>Perfect for content-rich pages.</p>
+          <p class="button-container">
+            <a href="/" class="button">Explore</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dark + Wide Combination -->
+    <div>
+      <h2>Dark + Wide Combination</h2>
+      <div class="teaser dark wide">
+        <div>
+          <picture>
+            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=2000&h=900&fit=crop" 
+                 alt="Dark wide landscape" 
+                 width="2000" 
+                 height="900">
+          </picture>
+        </div>
+        <div>
+          <h2>Combined Variants</h2>
+          <p>Mix and match variants for unique experiences.</p>
+          <p class="button-container">
+            <a href="/" class="button primary">Get Started</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <footer></footer>
+</body>
+</html>
+
