@@ -303,7 +303,7 @@
       },
       {
         "component": "select",
-        "name": "textContent_cta2Type",
+        "name": "textContent_ctaType",
         "label": "Button Type",
         "valueType": "string",
         "options": [
