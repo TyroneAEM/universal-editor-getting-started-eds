@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Query Config to Index API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        textarea {
+            width: 100%;
+            height: 400px;
+            font-family: monospace;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #218838;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Upload Query Config to Index API</h1>
+    
+    <div class="info">
+        <strong>✅ Correct API Endpoint Found!</strong>
+        <p>Universal Editor uses <code>/index/</code> endpoint, not <code>/config/</code></p>
+        <p><strong>Endpoint:</strong> <code id="apiUrl">https://admin.hlx.page/index/tyroneaem/universal-editor-getting-started-eds/main/query</code></p>
+    </div>
+
+    <h2>Query Index Configuration (YAML)</h2>
+    <textarea id="configYaml">version: 1
+
+indices:
+  pages:
+    include:
+      - '/**'
+    exclude:
+      - '/**.json'
+    target: /query-index.json
+    properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      author:
+        select: head > meta[name="author"]
+        value: attribute(el, "content")
+      date:
+        select: head > meta[name="publication-date"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[name="description"]
+        value: attribute(el, "content")
+      category:
+        select: head > meta[name="category"]
+        value: attribute(el, "content")
+      tags:
+        select: head > meta[name="article:tag"]
+        values: attribute(el, "content")
+      robots:
+        select: head > meta[name="robots"]
+        value: attribute(el, "content")
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")</textarea>
+
+    <button onclick="uploadConfig()">📤 Upload to Index API (Configuration Service)</button>
+
+    <div id="result"></div>
+
+    <script>
+        async function uploadConfig() {
+            const yaml = document.getElementById('configYaml').value;
+            const apiUrl = 'https://admin.hlx.page/index/tyroneaem/universal-editor-getting-started-eds/main/query';
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.innerHTML = '<div class="info"><p>⏳ Uploading configuration to Index API...</p></div>';
+            
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-yaml',
+                    },
+                    body: yaml,
+                    credentials: 'include'
+                });
+                
+                const responseText = await response.text();
+                
+                if (response.ok || response.status === 201) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h3>🎉 SUCCESS! Migrated to Configuration Service!</h3>
+                            <p><strong>Status:</strong> ${response.status} ${response.statusText}</p>
+                            <p><strong>Response:</strong></p>
+                            <pre>${responseText || 'Configuration uploaded successfully'}</pre>
+                            
+                            <h3>✅ Next Steps:</h3>
+                            <ol>
+                                <li><strong>Verify:</strong> <a href="${apiUrl}" target="_blank">View your config in API</a></li>
+                                <li><strong>Test:</strong> <a href="https://main--universal-editor-getting-started-eds--tyroneaem.aem.live/query-index.json" target="_blank">Check query-index.json still works</a></li>
+                                <li><strong>Optional:</strong> Delete helix-query.yaml from your repo (API Mode doesn't need it)</li>
+                                <li><strong>Commit:</strong> Push changes to main branch</li>
+                            </ol>
+                            
+                            <h3>🎓 You've Successfully Migrated!</h3>
+                            <p>Your project is now using <strong>Configuration Service (API Mode)</strong> instead of Document Mode!</p>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h3>❌ Error</h3>
+                            <p><strong>Status:</strong> ${response.status} ${response.statusText}</p>
+                            <p><strong>Response:</strong></p>
+                            <pre>${responseText}</pre>
+                            
+                            <h3>Troubleshooting:</h3>
+                            <ul>
+                                <li><strong>401:</strong> <a href="https://admin.hlx.page/auth/adobe" target="_blank">Re-authenticate</a></li>
+                                <li><strong>403:</strong> Check permissions for tyroneaem organization</li>
+                                <li><strong>405:</strong> Try PUT instead of POST</li>
+                            </ul>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Error</h3>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p>Make sure you're <a href="https://admin.hlx.page/login" target="_blank">logged in</a></p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
+
