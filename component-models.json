@@ -190,6 +190,18 @@
     ]
   },
   {
+    "id": "header-title",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "headerTitle",
+        "label": "Header Title",
+        "required": true
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
